@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Story App</string>
+    <!-- English -->
+    <string name="signup">Sign Up</string>
+    <string name="login">Log In</string>
+    <string name="message_welcome_page">Want to learn Android, iOS, Machine Learning, Cloud, Front-End, Back-End, and other IT fields? Just go to Dicoding!</string>
+    <string name="title_welcome_page">Welcome to Dicoding!</string>
+    <string name="title_signup_page">Please complete your information below</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message_login_page">Please enter your data</string>
+    <string name="title_login_page">Ready to upgrade your skills?</string>
+    <string name="name">Name</string>
+    <string name="message_main_page">Enjoy Learning at Dicoding.</string>
+    <string name="greeting">Hello %1$s,</string>
+    <string name="logout">Logout</string>
+    <string name="tvUsername">Username</string>
+    <string name="tvDeskripsi">Description</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+    <string name="empty_image_warning">Image not uploaded</string>
+
+</resources>
