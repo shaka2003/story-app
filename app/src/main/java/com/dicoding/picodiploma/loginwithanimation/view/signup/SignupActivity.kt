@@ -1,5 +1,7 @@
 package com.dicoding.picodiploma.loginwithanimation.view.signup
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -28,6 +30,7 @@ class SignupActivity : AppCompatActivity() {
 
         setupView()
         setupAction()
+        playAnimation()
 
         viewModel.isLoading.observe(this) {
             binding.pbRegister.visibility = if (it) View.VISIBLE else View.GONE
@@ -62,8 +65,7 @@ class SignupActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        @Suppress("DEPRECATION") if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
             window.setFlags(
@@ -83,6 +85,29 @@ class SignupActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 viewModel.register(name, email, password)
             }
+        }
+    }
+
+    private fun playAnimation() {
+        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -30f, 30f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
+
+        val title = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1f).setDuration(1000)
+        val nameTitle = ObjectAnimator.ofFloat(binding.nameTextView, View.ALPHA, 1f).setDuration(1000)
+        val name = ObjectAnimator.ofFloat(binding.nameEditTextLayout, View.ALPHA, 1f).setDuration(1000)
+        val emailTitle = ObjectAnimator.ofFloat(binding.emailTextView, View.ALPHA, 1f).setDuration(1000)
+        val email = ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1f).setDuration(1000)
+        val passwordTitle = ObjectAnimator.ofFloat(binding.passwordTextView, View.ALPHA, 1f).setDuration(1000)
+        val password = ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1f).setDuration(1000)
+        val signup = ObjectAnimator.ofFloat(binding.signupButton, View.ALPHA, 1f).setDuration(1000)
+
+
+        AnimatorSet().apply {
+            playSequentially(title, nameTitle, name, emailTitle, email, passwordTitle, password, signup)
+            start()
         }
     }
 }

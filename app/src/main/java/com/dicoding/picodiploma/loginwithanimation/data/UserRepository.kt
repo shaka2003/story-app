@@ -1,7 +1,7 @@
 package com.dicoding.picodiploma.loginwithanimation.data
 
 import androidx.lifecycle.liveData
-import com.dicoding.picodiploma.loginwithanimation.data.api.ApiService
+import com.dicoding.picodiploma.loginwithanimation.data.api.retrofit.ApiService
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.FileUploadResponse
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.LoginResponse

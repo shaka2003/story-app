@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.data.api
+package com.dicoding.picodiploma.loginwithanimation.data.api.retrofit
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

@@ -29,6 +29,8 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +43,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/name"
+        android:alpha="0"
+        tools:alpha="100"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
@@ -52,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView"
@@ -72,6 +78,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="@string/email"
+        android:alpha="0"
+        tools:alpha="100"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTextLayout" />
@@ -83,12 +91,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.dicoding.picodiploma.loginwithanimation.view.customview.CustomEmailField
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,6 +113,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/password"
+        android:alpha="0"
+        tools:alpha="100"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
@@ -115,12 +127,14 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:endIconMode="password_toggle"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-        <com.dicoding.picodiploma.loginwithanimation.view.login.CustomPassField
+        <com.dicoding.picodiploma.loginwithanimation.view.customview.CustomPassField
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,6 +151,8 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/navy"
         android:text="@string/signup"
+        android:alpha="0"
+        tools:alpha="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />

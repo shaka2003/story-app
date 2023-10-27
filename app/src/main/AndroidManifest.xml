@@ -11,13 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginWithAnimation">
         <activity
-            android:name=".view.story.AddStoriesActivity"
+            android:name=".view.story.activity.AddStoriesActivity"
             android:exported="false" />
         <activity
-            android:name=".view.story.DetailStoryActivity"
+            android:name=".view.story.activity.DetailStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".view.story.StoryActivity"
+            android:name=".view.story.activity.StoryActivity"
             android:exported="false" />
         <activity
             android:name=".view.welcome.WelcomeActivity"

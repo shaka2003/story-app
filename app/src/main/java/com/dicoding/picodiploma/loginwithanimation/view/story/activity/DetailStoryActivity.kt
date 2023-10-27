@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.view.story
+package com.dicoding.picodiploma.loginwithanimation.view.story.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,12 +1,13 @@
-package com.dicoding.picodiploma.loginwithanimation.view.login
+package com.dicoding.picodiploma.loginwithanimation.view.customview
 
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Patterns
 import com.google.android.material.textfield.TextInputEditText
 
-class CustomPassField : TextInputEditText {
+class CustomEmailField : TextInputEditText {
 
     constructor(context: Context) : super(context) {
         init()
@@ -28,15 +29,20 @@ class CustomPassField : TextInputEditText {
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().length < 8) {
-                    setError("Password tidak boleh kurang dari 8 karakter", null)
-                } else {
-                    error = null
-                }
+                validateEmail(s.toString())
             }
 
-            override fun afterTextChanged(s: Editable) {}
+            override fun afterTextChanged(s: Editable) {
+                validateEmail(s.toString())
+            }
         })
     }
 
+    private fun validateEmail(email: String) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            setError("email tidak sesuai", null)
+        } else {
+            error = null
+        }
+    }
 }

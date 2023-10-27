@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.view.story
+package com.dicoding.picodiploma.loginwithanimation.view.story.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
@@ -16,6 +14,8 @@ import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityStoryBind
 import com.dicoding.picodiploma.loginwithanimation.databinding.ListStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.logout.LogOutActivity
+import com.dicoding.picodiploma.loginwithanimation.view.story.Adapter
+import com.dicoding.picodiploma.loginwithanimation.view.story.viewmodel.StoryViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
 
 class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {

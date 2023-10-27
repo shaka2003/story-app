@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.data.api
+package com.dicoding.picodiploma.loginwithanimation.data.api.retrofit
 
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ErrorResponse
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.FileUploadResponse

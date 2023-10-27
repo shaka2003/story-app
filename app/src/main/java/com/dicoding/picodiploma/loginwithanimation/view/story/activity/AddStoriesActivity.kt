@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.loginwithanimation.view.story
+package com.dicoding.picodiploma.loginwithanimation.view.story.activity
 
 import android.Manifest
 import android.content.Intent
@@ -16,6 +16,8 @@ import androidx.core.content.ContextCompat
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityAddStoriesBinding
 import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
+import com.dicoding.picodiploma.loginwithanimation.view.story.viewmodel.AddStoriesViewModel
+import com.dicoding.picodiploma.loginwithanimation.view.story.ResultState
 import com.dicoding.picodiploma.loginwithanimation.view.story.camera.getImageUri
 import com.dicoding.picodiploma.loginwithanimation.view.story.camera.reduceFileImage
 import com.dicoding.picodiploma.loginwithanimation.view.story.camera.uriToFile
