@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
@@ -14,6 +15,7 @@ import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityStoryBind
 import com.dicoding.picodiploma.loginwithanimation.databinding.ListStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
 import com.dicoding.picodiploma.loginwithanimation.view.logout.LogOutActivity
+import com.dicoding.picodiploma.loginwithanimation.view.logout.LogOutViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.story.Adapter
 import com.dicoding.picodiploma.loginwithanimation.view.story.viewmodel.StoryViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
@@ -21,6 +23,10 @@ import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
 class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
 
     private val viewModel: StoryViewModel by viewModels {
+        ViewModelFactory.getInstance(this)
+    }
+
+    private val logoutViewModel by viewModels<LogOutViewModel> {
         ViewModelFactory.getInstance(this)
     }
 
@@ -81,9 +87,20 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.profil -> {
-                Intent(this, LogOutActivity::class.java).also {
-                    startActivity(it)
+            R.id.logout -> {
+                logoutViewModel.logout()
+
+                AlertDialog.Builder(this).apply {
+                    setTitle("Berhasil Logout!")
+                    setMessage("Anda telah logout")
+                    setPositiveButton("Lanjut") { _, _ ->
+                        val intent = Intent(this@StoryActivity, WelcomeActivity::class.java)
+                        ViewModelFactory.refreshObject()
+                        startActivity(intent)
+                        finish()
+                    }
+                    create()
+                    show()
                 }
             }
         }

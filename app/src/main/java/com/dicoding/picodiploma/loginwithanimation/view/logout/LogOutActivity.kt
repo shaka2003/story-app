@@ -3,13 +3,14 @@ package com.dicoding.picodiploma.loginwithanimation.view.logout
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityMainBinding
+import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityLogoutBinding
 import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
+import com.dicoding.picodiploma.loginwithanimation.view.story.activity.StoryActivity
 import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
 
 class LogOutActivity : AppCompatActivity() {
@@ -17,11 +18,11 @@ class LogOutActivity : AppCompatActivity() {
     private val viewModel by viewModels<LogOutViewModel> {
         ViewModelFactory.getInstance(this)
     }
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityLogoutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLogoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewModel.getSession().observe(this) { user ->
@@ -51,6 +52,16 @@ class LogOutActivity : AppCompatActivity() {
     private fun setupAction() {
         binding.logoutButton.setOnClickListener {
             viewModel.logout()
+
+            AlertDialog.Builder(this).apply {
+                setTitle("Berhasil Logout!")
+                setMessage("Anda telah logout")
+                setPositiveButton("Lanjut") { _, _ ->
+                    finish()
+                }
+                create()
+                show()
+            }
         }
     }
 
