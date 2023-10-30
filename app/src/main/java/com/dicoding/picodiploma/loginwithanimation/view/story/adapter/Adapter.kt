@@ -1,16 +1,16 @@
-package com.dicoding.picodiploma.loginwithanimation.view.story
+package com.dicoding.picodiploma.loginwithanimation.view.story.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
 import com.dicoding.picodiploma.loginwithanimation.databinding.ListStoryBinding
 
 class Adapter(private val clickListener: ItemClickListener) :
-    ListAdapter<ListStoryItem, Adapter.MyViewHolder>(DIFF_CALLBACK) {
+    PagingDataAdapter<ListStoryItem, Adapter.MyViewHolder>(DIFF_CALLBACK) {
 
     interface ItemClickListener {
         fun onItemClick(users: ListStoryItem, view: ListStoryBinding)
@@ -38,9 +38,13 @@ class Adapter(private val clickListener: ItemClickListener) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val users = getItem(position)
-        holder.bind(users)
+        if (users != null) {
+            holder.bind(users)
+        }
         holder.itemView.setOnClickListener {
-            clickListener.onItemClick(users, holder.binding)
+            if (users != null) {
+                clickListener.onItemClick(users, holder.binding)
+            }
         }
     }
 

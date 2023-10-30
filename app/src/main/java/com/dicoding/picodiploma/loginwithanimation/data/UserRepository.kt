@@ -1,6 +1,11 @@
 package com.dicoding.picodiploma.loginwithanimation.data
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.dicoding.picodiploma.loginwithanimation.data.api.retrofit.ApiService
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.FileUploadResponse
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
@@ -40,6 +45,20 @@ class UserRepository private constructor(
         return apiService.getListStory().listStory
     }
 
+    fun getStoryPagingData(): LiveData<PagingData<ListStoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20, // Adjust the page size as needed
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { StoryPagingSource(apiService) }
+        ).liveData
+    }
+
+    suspend fun getStoriesLocation(): List<ListStoryItem?>? {
+        return apiService.getStoriesWithLocation().listStory
+    }
+
     fun uploadImage(imageFile: File, description: String) = liveData {
         emit(ResultState.Loading)
         val requestBody = description.toRequestBody("text/plain".toMediaType())
@@ -71,7 +90,7 @@ class UserRepository private constructor(
                 instance ?: UserRepository(userPreference, apiService)
             }.also { instance = it }
 
-        fun resetIntance() {
+        fun resetInstance() {
             instance = null
         }
     }

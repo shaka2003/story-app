@@ -14,9 +14,10 @@ import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryIt
 import com.dicoding.picodiploma.loginwithanimation.databinding.ActivityStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.databinding.ListStoryBinding
 import com.dicoding.picodiploma.loginwithanimation.view.ViewModelFactory
-import com.dicoding.picodiploma.loginwithanimation.view.logout.LogOutActivity
 import com.dicoding.picodiploma.loginwithanimation.view.logout.LogOutViewModel
-import com.dicoding.picodiploma.loginwithanimation.view.story.Adapter
+import com.dicoding.picodiploma.loginwithanimation.view.map.MapsActivity
+import com.dicoding.picodiploma.loginwithanimation.view.story.adapter.Adapter
+import com.dicoding.picodiploma.loginwithanimation.view.story.adapter.LoadingStateAdapter
 import com.dicoding.picodiploma.loginwithanimation.view.story.viewmodel.StoryViewModel
 import com.dicoding.picodiploma.loginwithanimation.view.welcome.WelcomeActivity
 
@@ -40,10 +41,14 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
         setContentView(binding.root)
 
         //nampilin toolbar
-        setSupportActionBar(binding.toolbar)
+//        setSupportActionBar(binding.toolbar)
 
         binding.rvStory.layoutManager = LinearLayoutManager(this)
-        binding.rvStory.adapter = storyAdapter
+        binding.rvStory.adapter = storyAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                storyAdapter.retry()
+            }
+        )
 
         //listener action button tambah
         binding.fabAdd.setOnClickListener {
@@ -51,8 +56,8 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
             startActivity(intent)
         }
 
-        viewModel.storyResponseLiveData.observe(this) {
-            storyAdapter.submitList(it)
+        viewModel.storyPagingData.observe(this) { pagingData ->
+            storyAdapter.submitData(lifecycle, pagingData)
         }
 
         viewModel.isLoading.observe(this) {
@@ -75,7 +80,7 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
             startActivity(Intent(this, WelcomeActivity::class.java))
             finish()
         } else {
-            viewModel.getListStory()
+            viewModel.storyPagingData
         }
     }
 
@@ -102,6 +107,11 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
                     create()
                     show()
                 }
+            }
+
+            R.id.maps -> {
+                val intent = Intent(this@StoryActivity, MapsActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

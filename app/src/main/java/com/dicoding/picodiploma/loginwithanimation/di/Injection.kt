@@ -18,7 +18,7 @@ object Injection {
         return UserRepository.getInstance(pref, apiService)
     }
 
-    fun resetIntance() {
-        UserRepository.resetIntance()
+    fun resetInstance() {
+        UserRepository.resetInstance()
     }
 }

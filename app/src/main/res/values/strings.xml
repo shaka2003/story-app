@@ -20,5 +20,7 @@
     <string name="gallery">Gallery</string>
     <string name="upload">Upload</string>
     <string name="empty_image_warning">Image not uploaded</string>
+    <string name="title_activity_maps">User Location</string>
+    <string name="retry">Try Again</string>
 
 </resources>
