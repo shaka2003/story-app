@@ -8,10 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.dicoding.picodiploma.loginwithanimation.data.UserRepository
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
-import com.dicoding.picodiploma.loginwithanimation.data.pref.UserModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class StoryViewModel(private val repository: UserRepository) : ViewModel() {

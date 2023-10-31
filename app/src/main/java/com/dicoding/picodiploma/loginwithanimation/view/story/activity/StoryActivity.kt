@@ -1,13 +1,13 @@
 package com.dicoding.picodiploma.loginwithanimation.view.story.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.loginwithanimation.R
 import com.dicoding.picodiploma.loginwithanimation.data.api.response.ListStoryItem
@@ -40,9 +40,6 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
         binding = ActivityStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //nampilin toolbar
-//        setSupportActionBar(binding.toolbar)
-
         binding.rvStory.layoutManager = LinearLayoutManager(this)
         binding.rvStory.adapter = storyAdapter.withLoadStateFooter(
             footer = LoadingStateAdapter {
@@ -50,7 +47,6 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
             }
         )
 
-        //listener action button tambah
         binding.fabAdd.setOnClickListener {
             val intent = Intent(this, AddStoriesActivity::class.java)
             startActivity(intent)
@@ -66,8 +62,6 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
 
     }
 
-
-    //to detail act
     override fun onItemClick(user: ListStoryItem, itemView: ListStoryBinding) {
         val intent = Intent(this, DetailStoryActivity::class.java)
         intent.putExtra("extra_user", user)
@@ -84,14 +78,13 @@ class StoryActivity : AppCompatActivity(), Adapter.ItemClickListener {
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.logout -> {
                 logoutViewModel.logout()
 
